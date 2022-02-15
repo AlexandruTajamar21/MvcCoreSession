@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MvcCoreSession.Models.Persona>
+
+@{
+    ViewData["Title"] = "ColeccionSession";
+}
+
+<h1>ColeccionSession</h1>
+<a asp-controller="Home" asp-action="ColeccionSession" asp-route-accion="almacenar">Almacenar</a>
+
+<a asp-controller="Home" asp-action="ColeccionSession" asp-route-accion="mostrar">Mostrar</a>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Edad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hora)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Edad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hora)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h2 style="color:red">@ViewData["MENSAJE"]</h2>
